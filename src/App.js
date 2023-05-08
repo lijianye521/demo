@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, createContext, useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from 'antd';
 
@@ -7,25 +7,28 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import './components/Header.css';
 
+export const ThemeContext = createContext();
 
-
-
-
-
-
+export const useTheme = () => useContext(ThemeContext);
 
 const App = () => {
+  const [theme, setTheme] = useState('dark');
+  const backgroundColor = theme === 'dark' ? '#001529' : '#ffffff';
+
   return (
-    <Layout>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-      <Footer />
-    </Layout>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <Layout style={{ minHeight: '100vh', backgroundColor }}>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+        <Footer />
+      </Layout>
+    </ThemeContext.Provider>
   );
 };
 
