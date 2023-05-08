@@ -9,7 +9,7 @@ import App from './App';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ConfigProvider locale={zhCN}>
+      <ConfigProvider locale={zhCN} theme={{ hashed: false }}>
         <App />
       </ConfigProvider>
     </BrowserRouter>

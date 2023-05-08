@@ -1,0 +1,11 @@
+.ant-menu::before {
+    display: none;
+}
+
+.ant-menu-horizontal::after {
+    display: none;
+}
+.rightAlignedItem {
+    margin-left: auto;
+  }
+  

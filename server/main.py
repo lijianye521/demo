@@ -41,9 +41,10 @@ def login():
     cursor.execute("SELECT * FROM Users WHERE username=%s AND password=%s", (username, password))
     user = cursor.fetchone()
     if user:
-        return jsonify({'message': 'Login successful'})
+        return jsonify({'message': 'Login successful', 'user': {'username': user[1]}})
 
     return jsonify({'message': 'Invalid credentials'}), 401
+
 
 if __name__ == '__main__':
     app.run(debug=True)
