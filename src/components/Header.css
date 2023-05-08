@@ -8,7 +8,7 @@
 .rightAlignedItem {
     margin-left: auto;
   }
-  
+
 /* Header.css */
 .ant-layout-header {
     padding: 0 !important;
@@ -20,5 +20,27 @@
   
   .light-theme .ant-menu {
     background-color: #ffffff;
+  }
+  
+  /* Header.css */
+
+@media screen and (max-width: 768px) {
+    .responsive-menu {
+      display: none;
+    }
+  
+    .responsive-menu-button {
+      display: block;
+    }
+  }
+  
+  @media screen and (min-width: 769px) {
+    .responsive-menu {
+      display: block;
+    }
+  
+    .responsive-menu-button {
+      display: none;
+    }
   }
   
