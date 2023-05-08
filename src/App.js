@@ -19,7 +19,11 @@ const App = () => {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <Layout style={{ minHeight: '100vh', backgroundColor }}>
+     <Layout
+  className={theme === 'dark' ? 'dark-theme' : 'light-theme'}
+  style={{ minHeight: '100vh', backgroundColor }}
+>
+
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />

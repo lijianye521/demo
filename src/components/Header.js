@@ -34,7 +34,14 @@ const HeaderComponent = () => {
 
   return (
     <AntHeader>
-      <Menu theme={theme} mode="horizontal" selectedKeys={getSelectedKeys()} style={{ display: 'flex', justifyContent: 'space-between' }}>
+     <Menu
+  theme={theme}
+  mode="horizontal"
+  className={theme === 'dark' ? 'dark-theme' : 'light-theme'}
+  selectedKeys={getSelectedKeys()}
+  style={{ display: 'flex', justifyContent: 'space-between' }}
+>
+
         <div>
           <Menu.Item key="1" onClick={() => window.location.href = '/'}>
             Home
