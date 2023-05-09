@@ -1,9 +1,45 @@
-import React from 'react';
-import { Layout, Menu, Switch, Button } from 'antd';
+import React, { useState } from 'react';
+import { Layout, Menu, Switch, Button, Drawer } from 'antd';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTheme } from '../App';
-import { MenuOutlined } from '@ant-design/icons';
+import { MenuOutlined,  EuroOutlined,
+  HeartOutlined,
+  CalculatorOutlined,
+  BarsOutlined, } from '@ant-design/icons';
+
 const { Header: AntHeader } = Layout;
+
+const DropDownMenu = () => {
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <>
+      <Button className='menubtn' type="primary" shape="circle" icon={<MenuOutlined />} onClick={showDrawer} />
+      <Drawer title={111} placement="right" onClose={onClose} open={open}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>  
+          <Button type="text" onClick={() => navigate('/')} icon={<EuroOutlined />}>
+            Home
+          </Button>
+          <Button type="text" onClick={() => navigate('/upload')} icon={<HeartOutlined />}>
+            Home1
+          </Button>
+          <Button type="text" onClick icon={<CalculatorOutlined />}>
+            Home2
+          </Button>
+        </div>
+      </Drawer>
+    </>
+  );
+}
 
 const HeaderComponent = () => {
   const navigate = useNavigate();
@@ -35,10 +71,11 @@ const HeaderComponent = () => {
 
   return (
     <AntHeader>
+      <DropDownMenu />
       <Menu
         theme={theme}
         mode="horizontal"
-        className={theme === 'dark' ? 'dark-theme' : 'light-theme'}
+        className={`${theme === 'dark' ? 'dark-theme' : 'light-theme'} bigmenu`}
         selectedKeys={getSelectedKeys()}
         style={{ display: 'flex', justifyContent: 'space-between' }}
       >
@@ -46,7 +83,7 @@ const HeaderComponent = () => {
           <Menu.Item key="1" onClick={() => navigate('/')}>
             Home
           </Menu.Item>
-          <Menu.Item key="6">Home1</Menu.Item>
+          <Menu.Item key="6" onClick={() => navigate('/upload')}>Upload</Menu.Item>
           <Menu.Item key="7">Home2</Menu.Item>
           <Menu.Item key="8">Home3</Menu.Item>
           <Menu.Item key="9">About us</Menu.Item>
@@ -79,30 +116,6 @@ const HeaderComponent = () => {
           )}
         </div>
       </Menu>
-      <style>{`
-        .menu-left {
-          display: flex;
-        }
-        .menu-right {
-          display: flex;
-          align-items: center;
-        }
-        @media (max-width: 768px) {
-          .menu-left,
-          .menu-right {
-            display: none;
-          }
-          .menu-button {
-            display: inline-block !important;
-          }
-          .ant-menu {
-            flex-direction: column;
-          }
-          .ant-menu-item {
-            text-align: center;
-          }
-        }
-      `}</style>
     </AntHeader>
   );
 };

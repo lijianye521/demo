@@ -10,7 +10,7 @@ const Home = () => {
   const color = theme === 'dark' ? '#fff' : '#000';
 
   return (
-    <Content style={{ padding: '50px' }}>
+    <Content style={{ padding: '30px 50px' }}>
       <h1 style={{ color }}>Welcome to the Demo App!</h1>
       <p style={{ color }}>Enjoy your stay.</p>
     </Content>
